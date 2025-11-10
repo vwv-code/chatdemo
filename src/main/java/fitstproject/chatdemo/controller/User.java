@@ -37,6 +37,7 @@ public class User {
                     .setExpiration(new Date(System.currentTimeMillis() + 12 * 3600 * 1000))
                     .compact();
         result.setData(jwt);
+        result.setMessage("message:登录成功");
         return result;
     }
     @PostMapping

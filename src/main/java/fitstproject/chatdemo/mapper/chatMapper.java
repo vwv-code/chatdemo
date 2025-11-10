@@ -25,8 +25,8 @@ public interface chatMapper {
 
 
     @Insert("insert into group_message_data(send_id, group_name, content) values(#{sendId},#{groupName},#{content})")
-    void send(groupmessage gmessage);
+    void sendgm(groupmessage gmessage);
 
 @Select("select group_name from groupdata  limit #{pageNum},#{pageSize}")
-    List<String> getlist(int i, int pageSize);
+    List<String> getlistgn(int i, int pageSize);
 }

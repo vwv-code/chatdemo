@@ -32,12 +32,12 @@ public class chatServiceimpl  implements chatService {
 
     @Override
     public void send(groupmessage gmessage) {
-chatmapper.send(gmessage);
+chatmapper.sendgm(gmessage);
     }
 
     @Override
     public Object getlist(int pageNum, int pageSize) {
-        return chatmapper.getlist((pageNum - 1) * pageSize, pageSize);
+        return chatmapper.getlistgn((pageNum - 1) * pageSize, pageSize);
     }
 
 }
