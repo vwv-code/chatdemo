@@ -16,8 +16,8 @@ public interface chatMapper {
     void send(message message);
 
 
-    @Select("select * from singlemessage where  (receive_id=#{receivedId} and send_id=#{sendId}) or (receive_id=#{sendId} and send_id=#{receiveId}) limit #{pageNum},#{pageSize}")
-    List<String> getlist(int i, int pageSize, int sendId, int receiveId);
+    @Select("select * from singlemessage where  (receive_id=#{receivedId} and send_id=#{sendId}) or (receive_id=#{sendId} and send_id=#{receiveId})")
+    List<message> getslist( int sendId, int receiveId);
 
 
     @Insert("insert into groupdata(group_name, member_id) values(#{groupName},#{group})")
@@ -27,6 +27,12 @@ public interface chatMapper {
     @Insert("insert into group_message_data(send_id, group_name, content) values(#{sendId},#{groupName},#{content})")
     void sendgm(groupmessage gmessage);
 
-@Select("select group_name from groupdata  limit #{pageNum},#{pageSize}")
-    List<String> getlistgn(int pageNum, int pageSize);
+@Select("select * from groupdata where  (receive_id=#{receivedId} and send_id=#{sendId}) or (receive_id=#{sendId} and send_id=#{receiveId})")
+    List<groupmessage> getlistgn(int sendId, String groupName);
+
+@Select("select * from user where id!=#{id}")
+    List<String> getslist_name(int id);
+
+@Select("select group_name from groupdata")
+    Object getlist_name(int id);
 }

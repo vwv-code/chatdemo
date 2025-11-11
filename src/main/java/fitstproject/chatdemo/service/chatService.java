@@ -8,11 +8,15 @@ public interface chatService {
     Object send(message message);
 
 
-    Object getlist(int pageNum, int pageSize, int receiveId, int sendId);
+    Object getslist(int sendId,int receiveId);
 
     Object groupCreate(group group);
 
     Object send(groupmessage gmessage);
 
-    Object getlist(int pageNum, int pageSize);
+    Object getlist(int sendId, String groupName);
+
+    Object getslist_name(int id);
+
+    Object getlist_name(int id);
 }

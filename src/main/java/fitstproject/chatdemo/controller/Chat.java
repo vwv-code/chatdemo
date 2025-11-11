@@ -20,14 +20,21 @@ public class Chat {
 
     @Autowired
     chatService chatservice;
+    @GetMapping("/single/list_name/{id}")
+    public Object singleListName(@PathVariable int id) {
+        return chatservice.getslist_name(id);
+    }
     @PostMapping("/single/send")
     public Object singleSend(@RequestBody message message) {
         return  chatservice.send(message);
-
     }
-    @GetMapping("/single/list/{pageNum}/{pageSize}/{receiveId}/{sendId}")
-    public Object singleList(@PathVariable int pageNum, @PathVariable int pageSize,@PathVariable int receiveId,@PathVariable int sendId) {
-        return  chatservice.getlist(pageNum, pageSize, receiveId, sendId);
+    @GetMapping("/single/list /{sendId}/{receiveId}")
+    public Object singleList(@PathVariable int sendId,@PathVariable int receiveId) {
+        return  chatservice.getslist(sendId,receiveId);
+    }
+    @GetMapping("/group/list_name/{id}")
+    public Object groupListName(@PathVariable int id) {
+        return chatservice.getlist_name(id);
     }
     @PostMapping("/group/create")
     public Object groupCreate(@RequestBody group  group) {
@@ -39,9 +46,9 @@ public class Chat {
         return chatservice.send(gmessage);
 
     }
-    @GetMapping("/group/list/{pageNum}/{pageSize}")
-    public Object groupList(@PathVariable int pageNum, @PathVariable int pageSize) {
-        return chatservice.getlist(pageNum, pageSize);
+    @GetMapping("/group/list/{sendId}/{groupName}")
+    public Object groupList(@PathVariable int sendId, @PathVariable String groupName) {
+        return chatservice.getlist(sendId, groupName);
 
     }
 

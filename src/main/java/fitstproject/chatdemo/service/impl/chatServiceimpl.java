@@ -20,8 +20,8 @@ public class chatServiceimpl  implements chatService {
     }
 
     @Override
-    public Object getlist(int pageNum, int pageSize, int receiveId, int sendId) {
-        return chatmapper.getlist((pageNum - 1) * pageSize, pageSize, sendId, receiveId);
+    public Object getslist(int sendId,int receiveId) {
+        return chatmapper.getslist(sendId,receiveId);
 
     }
 
@@ -39,8 +39,18 @@ chatmapper.sendgm(gmessage);
     }
 
     @Override
-    public Object getlist(int pageNum, int pageSize) {
-        return chatmapper.getlistgn((pageNum - 1) * pageSize, pageSize);
+    public Object getlist(int sendId, String groupName) {
+        return chatmapper.getlistgn(sendId, groupName);
+    }
+
+    @Override
+    public Object getslist_name(int id) {
+        return chatmapper.getslist_name(id);
+    }
+
+    @Override
+    public Object getlist_name(int id) {
+        return chatmapper.getlist_name(id);
     }
 
 }

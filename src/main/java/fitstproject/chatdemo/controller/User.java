@@ -22,8 +22,6 @@ public class User {
     private userService userservice;
     @GetMapping
     public Object log(@RequestBody LogUser loguser) {
-
-            userservice.login(loguser);
         return userservice.login(loguser);
     }
     @PostMapping
