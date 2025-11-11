@@ -21,31 +21,14 @@ public class User {
     @Autowired
     private userService userservice;
     @GetMapping
-    public result log(@RequestBody LogUser loguser) {
-        result result = new result();
-            Map<String, Object> claims = new HashMap<>();
-            Object m=userservice.login(loguser);
-            if(m==null) {
-                result.setMessage("message:用户名或密码错误");
-                return result;
-            }
-            claims.put("username", loguser.getUsername());
-            claims.put("password", loguser.getPassword());
+    public Object log(@RequestBody LogUser loguser) {
 
-            String jwt = Jwts.builder().signWith(SignatureAlgorithm.HS256, "aXRjYXN0")
-                    .addClaims(claims)
-                    .setExpiration(new Date(System.currentTimeMillis() + 12 * 3600 * 1000))
-                    .compact();
-        result.setData(jwt);
-        result.setMessage("message:登录成功");
-        return result;
+            userservice.login(loguser);
+        return userservice.login(loguser);
     }
     @PostMapping
-    public result register(@RequestBody LogUser loguser) {
-        result result = new result();
-        userservice.register(loguser);
-        result.setMessage("message:注册成功");
-        return result;
+    public Object register(@RequestBody LogUser loguser) {
+        return userservice.register(loguser);
     }
 
 }

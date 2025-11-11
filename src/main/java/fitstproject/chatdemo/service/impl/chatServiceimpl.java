@@ -13,9 +13,10 @@ public class chatServiceimpl  implements chatService {
     @Autowired
     chatMapper chatmapper;
     @Override
-    public void send(message message) {
+    public Object send(message message) {
         chatmapper.send(message);
 
+        return null;
     }
 
     @Override
@@ -25,14 +26,16 @@ public class chatServiceimpl  implements chatService {
     }
 
     @Override
-    public void groupCreate(group groups) {
+    public Object groupCreate(group groups) {
         for(Integer group:groups.getMemberIds())
             chatmapper.creategroup(group, groups.getGroupName());
+        return null;
     }
 
     @Override
-    public void send(groupmessage gmessage) {
+    public Object send(groupmessage gmessage) {
 chatmapper.sendgm(gmessage);
+        return null;
     }
 
     @Override

@@ -17,8 +17,9 @@ public class userServiceimpl implements userService {
     }
 
     @Override
-    public void register(LogUser loguser) {
+    public Object register(LogUser loguser) {
          usermapper.register(loguser);
+        return null;
     }
 
 }
