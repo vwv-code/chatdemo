@@ -28,5 +28,5 @@ public interface chatMapper {
     void sendgm(groupmessage gmessage);
 
 @Select("select group_name from groupdata  limit #{pageNum},#{pageSize}")
-    List<String> getlistgn(int i, int pageSize);
+    List<String> getlistgn(int pageNum, int pageSize);
 }
