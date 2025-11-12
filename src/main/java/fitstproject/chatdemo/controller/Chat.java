@@ -2,16 +2,9 @@ package fitstproject.chatdemo.controller;
 
 import fitstproject.chatdemo.pojo.*;
 import fitstproject.chatdemo.service.chatService;
-import fitstproject.chatdemo.service.userService;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 @Slf4j
 @RequestMapping("/chat")
