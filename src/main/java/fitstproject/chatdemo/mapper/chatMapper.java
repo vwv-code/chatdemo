@@ -1,5 +1,6 @@
 package fitstproject.chatdemo.mapper;
 
+import fitstproject.chatdemo.pojo.LogUser;
 import fitstproject.chatdemo.pojo.group;
 import fitstproject.chatdemo.pojo.groupmessage;
 import fitstproject.chatdemo.pojo.message;
@@ -16,7 +17,7 @@ public interface chatMapper {
     void send(message message);
 
 
-    @Select("select * from singlemessage where  (receive_id=#{receivedId} and send_id=#{sendId}) or (receive_id=#{sendId} and send_id=#{receiveId})")
+    @Select("select * from singlemessage where  (receive_id=#{receiveId} and send_id=#{sendId}) or (receive_id=#{sendId} and send_id=#{receiveId})")
     List<message> getslist( int sendId, int receiveId);
 
 
@@ -27,11 +28,11 @@ public interface chatMapper {
     @Insert("insert into group_message_data(send_id, group_name, content) values(#{sendId},#{groupName},#{content})")
     void sendgm(groupmessage gmessage);
 
-@Select("select * from groupdata where  (receive_id=#{receivedId} and send_id=#{sendId}) or (receive_id=#{sendId} and send_id=#{receiveId})")
+@Select("select * from group_message_data where group_name=#{groupName}")
     List<groupmessage> getlistgn(int sendId, String groupName);
 
 @Select("select * from user where id!=#{id}")
-    List<String> getslist_name(int id);
+    List<LogUser> getslist_name(int id);
 
 @Select("select group_name from groupdata")
     Object getlist_name(int id);

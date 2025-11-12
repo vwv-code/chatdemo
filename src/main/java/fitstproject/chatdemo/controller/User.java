@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.*;
 public class User {
     @Autowired
     private userService userservice;
-    @GetMapping
+    @GetMapping("/login")
     public Object log(@RequestBody LogUser loguser) {
         return userservice.login(loguser);
     }
-    @PostMapping
+    @PostMapping("/register")
     public Object register(@RequestBody LogUser loguser) {
         return userservice.register(loguser);
     }

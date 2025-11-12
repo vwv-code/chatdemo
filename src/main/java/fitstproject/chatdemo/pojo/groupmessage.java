@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class groupmessage {
     private Integer sendId;
     private String content;
-    private Integer groupName;
+    private String groupName;
 }

@@ -13,20 +13,22 @@ public class Chat {
 
     @Autowired
     chatService chatservice;
-    @GetMapping("/single/list_name/{id}")
+    @GetMapping("/single/name_list/{id}")
     public Object singleListName(@PathVariable int id) {
         return chatservice.getslist_name(id);
     }
     @PostMapping("/single/send")
     public Object singleSend(@RequestBody message message) {
+        System.out.println(message);
         return  chatservice.send(message);
     }
-    @GetMapping("/single/list /{sendId}/{receiveId}")
+    @GetMapping("/single/list/{sendId}/{receiveId}")
     public Object singleList(@PathVariable int sendId,@PathVariable int receiveId) {
         return  chatservice.getslist(sendId,receiveId);
     }
     @GetMapping("/group/list_name/{id}")
     public Object groupListName(@PathVariable int id) {
+        System.out.println("groupListName");
         return chatservice.getlist_name(id);
     }
     @PostMapping("/group/create")
