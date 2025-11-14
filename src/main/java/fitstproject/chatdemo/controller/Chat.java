@@ -37,7 +37,6 @@ public class Chat {
     }
     @PostMapping({"/group/send"})
     public Object groupSend(@RequestBody groupmessage gmessage) {
-
         return chatservice.send(gmessage);
 
     }
